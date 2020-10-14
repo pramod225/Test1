@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Test1
 {
@@ -10,35 +7,45 @@ namespace Test1
     {
         static void Main(string[] args)
         {
-            int No;
-            int [] intArray;
-            Console.WriteLine("Enter value to find the prime no");
-            No = Convert.ToInt32(Console.ReadLine());
-            intArray = new int[No];
-            for (int i=0;i<No;i++)
+            int NoOfArraySize;
+            int[] NoPrime;
+            int CountPrimeNO=0;
+            int temp;
+            Console.WriteLine("Enter the size of Array");
+            NoOfArraySize = Convert.ToByte(Console.ReadLine());
+            NoPrime = new int[NoOfArraySize];
+            for(int i = 0; i < NoOfArraySize; i++)
             {
-                intArray[i] = Convert.ToInt32(Console.ReadLine());
+                NoPrime[i] = Convert.ToInt16(Console.ReadLine());
             }
-            for(int i = 1; i < intArray.Length; i++)
+            Console.WriteLine("Array Element:");
+            for(int i = 0; i < NoOfArraySize; i++)
             {
-                Boolean isPrime = true;
-                for (int j=2;j<i;j++)
+                Console.WriteLine(NoPrime[i]);
+            }
+            Console.WriteLine("Prime no in  the Array");
+            for(int i = 0; i < NoOfArraySize; i++)
+            {
+                temp = 0;
+                for(int j = 2; j < NoPrime[i] - 1; j++)
                 {
-                    if (i % j == 0)
+                    if (NoPrime[i] % j == 0)
                     {
-                        isPrime = false;
-                        break;
+                        temp++;
                     }
+                }
+                if (temp== 0)
+                {
+                    CountPrimeNO++;
+                    Console.WriteLine(NoPrime[i]);
+                    
 
                 }
-                if (isPrime)
-                {
-                    Console.WriteLine("It is Prime:{0}",i);
-                }
+               
 
             }
+            Console.WriteLine("Total Prime no:" + CountPrimeNO);
             Console.Read();
-
         }
     }
 }
